@@ -1,11 +1,5 @@
 #include "ip_filter.h"
 
-// ("",  '.') -> [""]
-// ("11", '.') -> ["11"]
-// ("..", '.') -> ["", "", ""]
-// ("11.", '.') -> ["11", ""]
-// (".11", '.') -> ["", "11"]
-// ("11.22", '.') -> ["11", "22"]
 std::vector<std::string> split(const std::string &str, char separator)
 {
     std::vector<std::string> retValue;
@@ -24,4 +18,20 @@ std::vector<std::string> split(const std::string &str, char separator)
     retValue.push_back(str.substr(start));
 
     return retValue;
+}
+
+void printIp(ip_vector_t ipVector)
+{
+    for(const auto &ip : ipVector)
+    {
+        for(auto ip_part = ip.cbegin(); ip_part != ip.cend(); ++ip_part)
+        {
+            if (ip_part != ip.cbegin())
+            {
+                std::putchar('.');
+            }
+            std::printf("%s", ip_part->c_str());
+        }
+        std::putchar('\n');
+    }
 }
