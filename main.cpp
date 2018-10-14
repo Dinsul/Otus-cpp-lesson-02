@@ -1,36 +1,54 @@
 #include <cassert>
 #include <cstdlib>
+#include <cstdio>
+#include <cstring>
 #include <iostream>
+#include <algorithm>
 
 #include "ip_filter.h"
+
+
+bool myComparator(const std::vector<std::string> &f, const std::vector<std::string> &s)
+{
+    int cmpRes = 0;
+
+    for (decltype(f.size()) i = 0; i < f.size() && i < s.size() && cmpRes == 0; ++i)
+    {
+         cmpRes = f[i].compare(s[i]);
+    };
+
+    return cmpRes > 0;
+}
 
 int main(int argc, char const *argv[])
 {
     try
     {
-        std::vector<std::vector<std::string>> ip_pool;
+        ip_vector_t ip_pool;
 
         for(std::string line; std::getline(std::cin, line);)
         {
-            std::vector<std::string> v = split(line, '\t');
-            ip_pool.push_back(split(v.at(0), '.'));
+            auto splittedLine = split(line, '\t');
+            ip_pool.push_back(split(splittedLine.at(0), '.'));
         }
 
-        // TODO reverse lexicographically sort
+        // reverse lexicographically sort
 
-        for(std::vector<std::vector<std::string> >::const_iterator ip = ip_pool.cbegin(); ip != ip_pool.cend(); ++ip)
+//        std::sort(ip_pool.begin(), ip_pool.end(), myComparator);
+
+        std::sort(ip_pool.begin(), ip_pool.end(), [](ip_t first, ip_t &second)
         {
-            for(std::vector<std::string>::const_iterator ip_part = ip->cbegin(); ip_part != ip->cend(); ++ip_part)
-            {
-                if (ip_part != ip->cbegin())
-                {
-                    std::cout << ".";
+            int cmpRes = 0;
 
-                }
-                std::cout << *ip_part;
-            }
-            std::cout << std::endl;
-        }
+            for (decltype(first.size()) i = 0; i < first.size() && i < second.size() && cmpRes == 0; ++i)
+            {
+                 cmpRes = first[i].compare(second[i]);
+            };
+
+            return cmpRes > 0;
+        });
+
+        printIp(ip_pool);
 
         // 222.173.235.246
         // 222.130.177.64
