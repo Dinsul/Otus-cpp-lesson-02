@@ -7,20 +7,7 @@
 
 #include "ip_filter.h"
 
-
-bool myComparator(const std::vector<std::string> &f, const std::vector<std::string> &s)
-{
-    int cmpRes = 0;
-
-    for (decltype(f.size()) i = 0; i < f.size() && i < s.size() && cmpRes == 0; ++i)
-    {
-         cmpRes = f[i].compare(s[i]);
-    };
-
-    return cmpRes > 0;
-}
-
-int main(int argc, char const *argv[])
+int main()
 {
     try
     {
@@ -33,9 +20,6 @@ int main(int argc, char const *argv[])
         }
 
         // reverse lexicographically sort
-
-//        std::sort(ip_pool.begin(), ip_pool.end(), myComparator);
-
         std::sort(ip_pool.begin(), ip_pool.end(), [](ip_t first, ip_t &second)
         {
             int cmpRes = 0;
@@ -48,7 +32,7 @@ int main(int argc, char const *argv[])
             return cmpRes > 0;
         });
 
-//        printIp(ip_pool);
+        printIp(ip_pool);
 
         // 222.173.235.246
         // 222.130.177.64
