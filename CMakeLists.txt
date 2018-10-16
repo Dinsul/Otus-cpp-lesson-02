@@ -41,4 +41,4 @@ include (CPack)
 
 enable_testing()
 
-add_test(test_version_valid test_main_cli)
+add_test(test_split test_${PROJECT_NAME})
