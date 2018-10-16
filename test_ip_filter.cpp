@@ -1,8 +1,8 @@
-#define BOOST_TEST_MODULE test_main
-
-#include <boost/test/unit_test.hpp>
+#define BOOST_TEST_MODULE test_ip_filter
 
 #include "ip_filter.h"
+
+#include <boost/test/unit_test.hpp>
 
 BOOST_AUTO_TEST_SUITE(test_suite_ip_filter)
 
