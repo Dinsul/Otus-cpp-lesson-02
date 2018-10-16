@@ -11,21 +11,22 @@ add_executable(${PROJECT_NAME} "main.cpp" "ip_filter.cpp" "ip_filter.h")
 add_executable(test_${PROJECT_NAME} "test_${PROJECT_NAME}.cpp" "ip_filter.cpp")
 
 set_target_properties(${PROJECT_NAME} test_${PROJECT_NAME} PROPERTIES
-  CXX_STANDARD 14
-  CXX_STANDARD_REQUIRED ON
-  COMPILE_OPTIONS "-Wpedantic;-Wall;-Wextra"
-)
+    CXX_STANDARD 14
+    CXX_STANDARD_REQUIRED ON
+    COMPILE_OPTIONS "-Wpedantic;-Wall;-Wextra"
+    )
 
 set_target_properties(test_${PROJECT_NAME} PROPERTIES
-  CXX_STANDARD 11
-  CXX_STANDARD_REQUIRED ON
-  COMPILE_DEFINITIONS BOOST_TEST_DYN_LINK
-  INCLUDE_DIRECTORIES ${Boost_INCLUDE_DIR}
-)
+    CXX_STANDARD 11
+    CXX_STANDARD_REQUIRED ON
+    COMPILE_DEFINITIONS BOOST_TEST_DYN_LINK
+    INCLUDE_DIRECTORIES ${Boost_INCLUDE_DIR}
+    )
 
 target_link_libraries(test_${PROJECT_NAME}
-  ${Boost_LIBRARIES}
-)
+    COMPILE_DEFINITIONS BOOST_TEST_DYN_LINK
+    ${Boost_LIBRARIES}
+    )
 
 install(TARGETS ${PROJECT_NAME} RUNTIME DESTINATION bin)
 
