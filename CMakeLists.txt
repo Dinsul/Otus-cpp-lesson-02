@@ -10,7 +10,7 @@ add_executable(${PROJECT_NAME} "main.cpp" "ip_filter.cpp" "ip_filter.h")
 
 add_executable(test_${PROJECT_NAME} "test_${PROJECT_NAME}.cpp" "ip_filter.cpp")
 
-set_target_properties(${PROJECT_NAME} test_${PROJECT_NAME} PROPERTIES
+set_target_properties(${PROJECT_NAME} PROPERTIES
     CXX_STANDARD 14
     CXX_STANDARD_REQUIRED ON
     COMPILE_OPTIONS "-Wpedantic;-Wall;-Wextra"
@@ -39,6 +39,6 @@ set(CPACK_PACKAGE_CONTACT dinsul2.0@gmail.com)
 
 include (CPack)
 
-enable_testing()
+#enable_testing()
 
-add_test(test_split test_${PROJECT_NAME})
+#add_test(test_split test_${PROJECT_NAME})
