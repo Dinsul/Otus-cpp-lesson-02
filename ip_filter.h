@@ -14,8 +14,15 @@ using ip_vector_t   = std::vector<ip_t>;        //!< Тип списка IP-ад
 ///
 std::vector<std::string> split(const std::string &str, char separator);
 
+inline void printIp(ip_t ip);
+
 ///
 /// \brief printIp Выводит список векторов на стандартный вывод
 /// \param vector
 ///
 void printIp(ip_vector_t ipVector);
+
+void filterAndPrint(ip_vector_t ipVector, int arg0 = 256, int arg1 = 256, int arg2 = 256, int arg3 = 256);
+void filterAnyAndPrint(ip_vector_t ipVector, int arg);
+
+

@@ -48,7 +48,7 @@ int main(int argc, char const *argv[])
             return cmpRes > 0;
         });
 
-        printIp(ip_pool);
+//        printIp(ip_pool);
 
         // 222.173.235.246
         // 222.130.177.64
@@ -60,6 +60,7 @@ int main(int argc, char const *argv[])
 
         // TODO filter by first byte and output
         // ip = filter(1)
+        filterAndPrint(ip_pool, 1);
 
         // 1.231.69.33
         // 1.87.203.225
@@ -69,6 +70,7 @@ int main(int argc, char const *argv[])
 
         // TODO filter by first and second bytes and output
         // ip = filter(46, 70)
+        filterAndPrint(ip_pool, 46, 70);
 
         // 46.70.225.39
         // 46.70.147.26
@@ -77,6 +79,7 @@ int main(int argc, char const *argv[])
 
         // TODO filter by any byte and output
         // ip = filter_any(46)
+        filterAnyAndPrint(ip_pool, 46);
 
         // 186.204.34.46
         // 186.46.222.194
