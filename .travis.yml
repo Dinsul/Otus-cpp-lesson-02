@@ -3,7 +3,6 @@ compiler: clang
 before_script:
 - echo "deb http://archive.ubuntu.com/ubuntu trusty main universe" | sudo tee -a /etc/apt/sources.list.d/xenial.list
 #- echo "deb http://archive.ubuntu.com/ubuntu xenial main universe" | sudo tee -a /etc/apt/sources.list.d/xenial.list
-- sudo add-apt-repository ppa:boost-latest/ppa -y
 - sudo apt-get update
 script:
 - cmake .
