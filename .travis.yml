@@ -3,7 +3,7 @@ compiler: gcc
 #compiler: clang
 before_script:
 - echo "deb http://archive.ubuntu.com/ubuntu xenial main universe" | sudo tee -a /etc/apt/sources.list.d/xenial.list
-- sudo add-apt-repository ppa:boost-latest/ppa
+- sudo add-apt-repository ppa:boost-latest/ppa -y
 - sudo apt-get update
 - sudo apt-get install libboost-test-dev -y
 script:
