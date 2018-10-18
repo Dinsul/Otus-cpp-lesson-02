@@ -2,8 +2,8 @@ language: cpp
 compiler: clang
 before_script:
 - echo "deb http://archive.ubuntu.com/ubuntu trusty main universe" | sudo tee -a /etc/apt/sources.list.d/xenial.list
-#- echo "deb http://archive.ubuntu.com/ubuntu xenial main universe" | sudo tee -a /etc/apt/sources.list.d/xenial.list
 - sudo apt-get update
+- sudo apt-get install libboost-test-dev -y
 script:
 - cmake .
 - cmake --build .
