@@ -16,7 +16,7 @@ int main()
         }
 
         // reverse lexicographically sort
-        std::sort(ip_pool.begin(), ip_pool.end(), [](ip_t &first, ip_t &second)
+        std::sort(ip_pool.begin(), ip_pool.end(), [](const ip_t &first, const ip_t &second)
         {
             int cmpRes = 0;
 
