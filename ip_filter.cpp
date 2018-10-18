@@ -1,3 +1,5 @@
+#include <cstdio>
+
 #include "ip_filter.h"
 
 std::vector<std::string> split(const std::string &str, char separator)
