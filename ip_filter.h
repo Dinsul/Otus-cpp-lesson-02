@@ -42,7 +42,7 @@ void filterAndPrint(ip_vector_t ipVector, int arg0 = 256, int arg1 = 256, int ar
 /// \brief filterAnyAndPrint Выводит на стандартный вывод только те адреса,
 /// в которых любой байт подходит под абразец.
 /// \param ipVector Контейнер с IP-адресами
-/// \param arg >= 256 - ничего не выводить, > 256 абразец для вывода
+/// \param arg >= 256 - ничего не выводить, < 256 абразец для вывода
 ///
 void filterAnyAndPrint(ip_vector_t ipVector, int arg);
 

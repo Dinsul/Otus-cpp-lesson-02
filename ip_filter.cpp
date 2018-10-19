@@ -1,4 +1,5 @@
 #include <cstdio>
+#include <algorithm>
 
 #include "ip_filter.h"
 
@@ -70,10 +71,8 @@ void filterAnyAndPrint(ip_vector_t ipVector, int arg)
 
     for(const auto &ip : ipVector)
     {
-        if (  (ip[0].compare(std::to_string(arg)) == 0)
-           || (ip[1].compare(std::to_string(arg)) == 0)
-           || (ip[2].compare(std::to_string(arg)) == 0)
-           || (ip[3].compare(std::to_string(arg)) == 0) )
+        if ( std::any_of(ip.begin(), ip.end(), [=](const std::string &i)
+            {return i.compare(std::to_string(arg)) == 0;}))
         {
             printIp(ip);
             std::putchar('\n');

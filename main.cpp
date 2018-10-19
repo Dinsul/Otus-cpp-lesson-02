@@ -16,17 +16,7 @@ int main()
         }
 
         // reverse lexicographically sort
-        std::sort(ip_pool.begin(), ip_pool.end(), [](const ip_t &first, const ip_t &second)
-        {
-            int cmpRes = 0;
-
-            for (decltype(first.size()) i = 0; i < first.size() && i < second.size() && cmpRes == 0; ++i)
-            {
-                 cmpRes = first[i].compare(second[i]);
-            };
-
-            return cmpRes > 0;
-        });
+        std::sort(ip_pool.begin(), ip_pool.end(), std::greater<ip_t>());
 
         printIp(ip_pool);
 
