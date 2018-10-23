@@ -7,7 +7,7 @@ int main()
 {
     try
     {
-        ip_vector_t ip_pool;
+        std::vector<ip_t> ip_pool;
 
         for(std::string line; std::getline(std::cin, line);)
         {
@@ -16,7 +16,8 @@ int main()
         }
 
         // reverse lexicographically sort
-        std::sort(ip_pool.begin(), ip_pool.end(), std::greater<ip_t>());
+//        std::sort(ip_pool.begin(), ip_pool.end(), std::greater<ip_t>());
+        std::sort(ip_pool.begin(), ip_pool.end(), [](const ip_t &f, const ip_t &s){return f < s;});
 
         printIp(ip_pool);
 
@@ -28,10 +29,14 @@ int main()
 
         // filter by any byte and output
         filterAnyAndPrint(ip_pool, 46);
+
+        ip_pool.at(0) < ip_pool.at(1);
     }
     catch(const std::exception &e)
     {
         std::cerr << e.what() << std::endl;
+
+        return 1;
     }
 
     return 0;

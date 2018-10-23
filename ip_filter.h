@@ -6,6 +6,8 @@
 using ip_t          = std::vector<std::string>; //!< Тип для хранения IP-адресов
 using ip_vector_t   = std::vector<ip_t>;        //!< Тип списка IP-адресов
 
+bool operator < (const ip_t &first, const ip_t &second);
+
 ///
 /// \brief split Разбивает стороку на части
 /// \param str Исходная строка
