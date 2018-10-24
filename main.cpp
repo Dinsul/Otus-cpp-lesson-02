@@ -18,17 +18,15 @@ int main()
         }
 
         // reverse lexicographically sort
-//        std::sort(ip_pool.begin(), ip_pool.end(), std::greater<ip_t>());
+        // std::sort(ip_pool.begin(), ip_pool.end(), std::greater<ip_t>());
         std::sort(ip_pool.begin(), ip_pool.end(), [](const ip_t &f, const ip_t &s){return f < s;});
 
         printIp(ip_pool);
 
         // filter by first byte and output
-//        filterAndPrint(ip_pool, 1);
         printIp(ip_pool, 1);
 
         // filter by first and second bytes and output
-//        filterAndPrint(ip_pool, 46, 70);
         printIp(ip_pool, 46, 70);
 
         // filter by any byte and output
