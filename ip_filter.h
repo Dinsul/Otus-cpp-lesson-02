@@ -49,3 +49,19 @@ void filterAndPrint(ip_vector_t ipVector, int arg0 = 256, int arg1 = 256, int ar
 void filterAnyAndPrint(ip_vector_t ipVector, int arg);
 
 
+template<typename T, typename ... Args>
+void printIp(ip_vector_t &ipVector, T first, Args... args)
+{
+    ip_vector_t filtered;
+    auto pos = sizeof... (args);
+
+    for (const auto &ip : ipVector)
+    {
+        if (std::stoi(ip.at(pos)) == first)
+        {
+            filtered.push_back(ip);
+        }
+    }
+
+    return printIp(filtered, args...);
+}

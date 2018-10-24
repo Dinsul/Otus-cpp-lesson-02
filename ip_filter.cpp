@@ -68,9 +68,9 @@ void filterAnyAndPrint(ip_vector_t ipVector, int arg)
         return;
     }
 
-    for(const auto &ip : ipVector)
+    for (const auto &ip : ipVector)
     {
-        if ( std::any_of(ip.begin(), ip.end(), [=](const std::string &i)
+        if (std::any_of(ip.begin(), ip.end(), [=](const std::string &i)
         {return i.compare(std::to_string(arg)) == 0;}))
         {
             printIp(ip);
@@ -105,4 +105,13 @@ bool operator <(const ip_t &first, const ip_t &second)
     };
 
     return fDigit > sDigit;
+}
+
+void printIp(ip_vector_t &ipVector)
+{
+    for(const auto &ip : ipVector)
+    {
+        printIp(ip);
+        std::putchar('\n');
+    }
 }

@@ -9,6 +9,8 @@ int main()
     {
         std::vector<ip_t> ip_pool;
 
+        ip_pool.reserve(1000);
+
         for(std::string line; std::getline(std::cin, line);)
         {
             auto splittedLine = split(line, '\t');
@@ -22,15 +24,15 @@ int main()
         printIp(ip_pool);
 
         // filter by first byte and output
-        filterAndPrint(ip_pool, 1);
+//        filterAndPrint(ip_pool, 1);
+        printIp(ip_pool, 1);
 
         // filter by first and second bytes and output
-        filterAndPrint(ip_pool, 46, 70);
+//        filterAndPrint(ip_pool, 46, 70);
+        printIp(ip_pool, 46, 70);
 
         // filter by any byte and output
         filterAnyAndPrint(ip_pool, 46);
-
-        ip_pool.at(0) < ip_pool.at(1);
     }
     catch(const std::exception &e)
     {
