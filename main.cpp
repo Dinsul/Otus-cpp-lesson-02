@@ -27,7 +27,7 @@ int main()
         printIp(ip_pool, 1);
 
         // filter by first and second bytes and output
-        printIp(ip_pool, 46, 70);
+        printIp(ip_pool, 70, 46);
 
         // filter by any byte and output
         filterAnyAndPrint(ip_pool, 46);
