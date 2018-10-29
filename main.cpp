@@ -9,17 +9,23 @@ int main()
     {
         std::vector<ip_t> ip_pool;
 
-        ip_pool.reserve(1000);
+        ip_pool.reserve(1500);
 
         for(std::string line; std::getline(std::cin, line);)
         {
             auto splittedLine = split(line, '\t');
-            ip_pool.push_back(split(splittedLine.at(0), '.'));
+            ip_t newIp;
+
+            for (auto node : split(splittedLine.at(0), '.'))
+            {
+                newIp.push_back(std::stoi(node));
+            }
+
+            ip_pool.push_back(newIp);
         }
 
         // reverse lexicographically sort
-        // std::sort(ip_pool.begin(), ip_pool.end(), std::greater<ip_t>());
-        std::sort(ip_pool.begin(), ip_pool.end(), [](const ip_t &f, const ip_t &s){return f < s;});
+         std::sort(ip_pool.begin(), ip_pool.end(), std::greater<ip_t>());
 
         printIp(ip_pool);
 

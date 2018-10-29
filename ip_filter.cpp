@@ -3,20 +3,6 @@
 
 #include "ip_filter.h"
 
-bool operator < (const ip_t &first, const ip_t &second)
-{
-    int fDigit = 0;
-    int sDigit = 0;
-
-    for (decltype(first.size()) i = 0; i < first.size() && i < second.size() && fDigit == sDigit; ++i)
-    {
-        fDigit = std::stoi(first[i]);
-        sDigit = std::stoi(second[i]);
-    };
-
-    return fDigit > sDigit;
-}
-
 std::vector<std::string> split(const std::string &str, char separator)
 {
     std::vector<std::string> retValue;
@@ -39,14 +25,7 @@ std::vector<std::string> split(const std::string &str, char separator)
 
 inline void printIp(const ip_t &ip)
 {
-    for(auto ip_part = ip.cbegin(); ip_part != ip.cend(); ++ip_part)
-    {
-        if (ip_part != ip.cbegin())
-        {
-            std::putchar('.');
-        }
-        std::printf("%s", ip_part->c_str());
-    }
+    std::printf("%d.%d.%d.%d\n", ip[0], ip[1], ip[2], ip[3]);
 }
 
 void printIp(const ip_vector_t &ipVector)
@@ -54,26 +33,16 @@ void printIp(const ip_vector_t &ipVector)
     for(const auto &ip : ipVector)
     {
         printIp(ip);
-        std::putchar('\n');
     }
 }
 
 void filterAnyAndPrint(const ip_vector_t &ipVector, int arg)
 {
-    if (arg > 255)
-    {
-        return;
-    }
-
     for (const auto &ip : ipVector)
     {
-        if (std::any_of(ip.begin(), ip.end(), [=](const std::string &i)
-            {return stoi(i) == arg;}))
+        if (std::any_of(ip.begin(), ip.end(), [=](int i){return i == arg;}))
         {
             printIp(ip);
-            std::putchar('\n');
         }
     }
-
-    return;
 }

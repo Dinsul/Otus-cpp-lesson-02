@@ -3,10 +3,8 @@
 #include <string>
 #include <vector>
 
-using ip_t          = std::vector<std::string>; //!< Тип для хранения IP-адресов
-using ip_vector_t   = std::vector<ip_t>;        //!< Тип списка IP-адресов
-
-bool operator < (const ip_t &first, const ip_t &second);
+using ip_t          = std::vector<int>;  //!< Тип для хранения IP-адресов
+using ip_vector_t   = std::vector<ip_t>; //!< Тип списка IP-адресов
 
 ///
 /// \brief split Разбивает стороку на части
@@ -44,7 +42,7 @@ void printIp(ip_vector_t &ipVector, T first, Args... args)
 
     for (const auto &ip : ipVector)
     {
-        if (std::stoi(ip.at(pos)) == first)
+        if (ip.at(pos) == first)
         {
             filtered.push_back(ip);
         }
